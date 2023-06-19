@@ -1,30 +1,21 @@
-import LoRaReceiverCallback_dual_channels
-import config_lora
+# import LoRaDumpRegisters
+# import LoRaSender
+# import LoRaReceiver
+# import LoRaSetSpread
+# import LoRaSetSyncWord
+# import LoRaReceiverCallback
+# import LoRaDuplex
+import LoRaDuplexCallback
+import controller.config_lora as config_lora
 import sx127x
 
 
-# import LoRaReceiverCallback
 
-if config_lora.IS_ESP8266:
-    PIN_ID_SS_1 = 15
-    PIN_ID_SS_2 = 16
-    PIN_ID_FOR_LORA1_DIO0 = 5
-    PIN_ID_FOR_LORA2_DIO0 = 0
-if config_lora.IS_ESP32:
-    PIN_ID_SS_1 = 15
-    PIN_ID_SS_2 = 17
-    PIN_ID_FOR_LORA1_DIO0 = 5
-    PIN_ID_FOR_LORA2_DIO0 = 16
-if config_lora.IS_RPi:
-    PIN_ID_SS_1 = 25
-    PIN_ID_SS_2 = 7
-    PIN_ID_FOR_LORA1_DIO0 = 17
-    PIN_ID_FOR_LORA2_DIO0 = 27
-
+# import LoRaPingPong
 
 
 def main():
-    # Controller(spi = spi,
+    # Controller(
     #            pin_id_led = ON_BOARD_LED_PIN_NO,
     #            on_board_led_high_is_on = ON_BOARD_LED_HIGH_IS_ON,
     #            pin_id_reset = PIN_ID_FOR_LORA_RESET,
@@ -45,15 +36,20 @@ def main():
     #                            pin_id_CadDone = PIN_ID_FOR_LORA_DIO3,
     #                            pin_id_CadDetected = PIN_ID_FOR_LORA_DIO4,
     #                            pin_id_PayloadCrcError = PIN_ID_FOR_LORA_DIO5)
-    lora1 = controller.add_transceiver(sx127x.SX127x(name = 'LoRa1'),
-                                       pin_id_ss = PIN_ID_SS_1,
-                                       pin_id_RxDone = PIN_ID_FOR_LORA1_DIO0)
-    lora2 = controller.add_transceiver(sx127x.SX127x(name = 'LoRa2'),
-                                       pin_id_ss = PIN_ID_SS_2,
-                                       pin_id_RxDone = PIN_ID_FOR_LORA2_DIO0)
+    lora = controller.add_transceiver(sx127x.SX127x(name = 'LoRa'),
+                                      pin_id_ss = config_lora.Controller.PIN_ID_FOR_LORA_SS,
+                                      pin_id_RxDone = config_lora.Controller.PIN_ID_FOR_LORA_DIO0)
+    print('lora', lora)
 
-    LoRaReceiverCallback_dual_channels.receiveCallback(lora1, lora2)
-    # LoRaReceiverCallback.receiveCallback(lora1)
+    # LoRaDumpRegisters.dumpRegisters(lora)
+    # LoRaSender.send(lora)
+    # LoRaReceiver.receive(lora)
+    # LoRaSetSpread.setSpread(lora)
+    # LoRaSetSyncWord.setSyncWord(lora)
+    # LoRaReceiverCallback.receiveCallback(lora)
+    # LoRaDuplex.duplex(lora)
+    LoRaDuplexCallback.duplexCallback(lora)
+    # LoRaPingPong.ping_pong(lora)
 
 
 

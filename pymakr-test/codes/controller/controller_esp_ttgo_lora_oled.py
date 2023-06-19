@@ -1,5 +1,5 @@
 import controller_esp
-import display_ssd1306_i2c
+from display import display_ssd1306_i2c
 import machine
 
 

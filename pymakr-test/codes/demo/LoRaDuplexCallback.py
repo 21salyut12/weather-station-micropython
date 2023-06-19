@@ -1,5 +1,5 @@
 import time
-import config_lora
+from controller import config_lora
 
 
 msgCount = 0  # count of outgoing messages

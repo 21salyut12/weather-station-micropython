@@ -6,6 +6,10 @@
 		{
 			"name": "pymakr-test",
 			"path": "."
+		},
+		{
+			"name": "serial:/COM4",
+			"uri": "serial://com4/"
 		}
 	],
 	"settings": {

@@ -1,4 +1,4 @@
-from config_lora import millisecond, NODE_NAME
+from controller.config_lora import NODE_NAME, millisecond
 
 
 msgCount = 0  # count of outgoing messages
@@ -7,10 +7,8 @@ INTERVAL_BASE = 2000  # interval between sends base
 
 
 
-def setSpread(lora):
-    print("LoRa Duplex - Set spreading factor")
-    lora.setSpreadingFactor(8)  # ranges from 6-12,default 7 see API docs
-
+def duplex(lora):
+    print("LoRa Duplex")
     do_loop(lora)
 
 
@@ -54,5 +52,4 @@ def receive(lora):
             print("*** Received message ***\n{}".format(payload.decode()))
         except Exception as e:
             print(e)
-        print("RSSI: {}".format(str(lora.packetRssi())))
-        print("Snr: {}\n".format(str(lora.packetSnr())))
+        print("with RSSI {}\n".format(lora.packetRssi()))

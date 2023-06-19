@@ -9,7 +9,7 @@ import sx127x
 
 gc.collect()
 
-import test
+from demo.test import test
 
 
 # import test_dual_channels as test
