@@ -10,7 +10,8 @@ Initially this project was supposed to contain a slave and a master that communi
 
 - [Micropython-Firebase-Realtime-Database](https://github.com/ckoever/micropython-firebase-realtime-database);
 - [Micropython-BMP180](https://github.com/micropython-IMU/micropython-bmp180);
-- And rest of the libraries that have been used are all built into micropython.
+- [LoRa-driver-for-micropython](https://github.com/Wei1234c/SX127x_driver_for_MicroPython_on_ESP8266)
+- And the rest of the libraries that have been used are all built into micropython.
 
 ## ESP32
 
